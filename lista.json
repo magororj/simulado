@@ -1,0 +1,16 @@
+[
+        {
+            "nota " : 42,
+            "matricula" : 897413,
+            "especialidade" : "CLÍNICA MÉDICA",
+            "curso" : "2008 MEDCURSO SALVADOR - Turma A/2008 MED SALVADOR",
+            "filial" : "Salvador Salvador (BA)"
+        },
+        {
+            "nota" : 40,
+            "matricula" : 745133,
+            "especialidade" : "CIRURGIA GERAL",
+            "curso" : "2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO ",
+            "filial" : "São Paulo (SP)"
+        }
+      ]

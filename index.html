@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" style="font-size:11px"> <!--<![endif]-->
+<head>
+
+    <!-- Meta-Information -->
+    <title>Simulado - MedGrupo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Simulado - MedGrupo">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Stylesheets http://getbootstrap.com -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body ng-app="simulado">
+<!--[if lt IE 7]>
+<p class="browsehappy">Você está usando um navegador <strong>desatualizado</strong>. Por favor <a href="http://browsehappy.com/"> atualize 
+    seu Navegador</a> para melhorar sua vida!</p>
+<![endif]-->
+
+<!-- Conteudo-->
+<div class="container" style="max-width: 960px" ng-controller="cursosMed" ng-cloak >
+
+        <div ng-include='"templates/header.html"'></div>
+
+        <div class="row d-flex justify-content-between d-print-none">
+            <!--MENU lateral-->
+            <div ng-include='"templates/menu.html"' class="col-sm-3 mt-4 ml-5"></div>
+
+            <div class="row col-sm-8 mt-4 pl-0 pr-5 mr-1 d-print-none" >
+                <div class="col-sm-12 mt-5">
+                    <h2>SIMULADO 5 - PROVA OBJETIVA</h2>
+                    <p> Os resultados do simulado são atualizados diariamente, na medida em que os 
+                            cartões-resposta e as provas discursivas vão sendo são processados. </p>
+                    <p>Através dos filtros, você poderá criar rankings personalizados, por ESPECIALIDADE, 
+                            TURMA(Curso) e UNIDADE (Cidade).</p>
+                    
+                    <div class="alert alert-dark">
+                        <form class="form-inline">
+                        
+                        <label for="matricula" class="alert-link pl-0 mr-2 text-left" >Entre com sua matrícula:</label>
+                        <input id="matricula" class="form-control form-control-sm col-sm-3" type="text" > 
+                        <button type="submit" class="btn btn-sm btn-dark col-sm-1 ml-2 " >Procurar</button>
+                        </form>
+                    </div> 
+                    <label for="">Filtrar por:</label>
+                    <div class="form-inline">
+                                
+                        <select class="form-control form-control-sm col-sm-3" name="" id=""><option>Especialidades - TODAS</option><option>Clínica Geral</option><option>Cirurgia Geral</option></select>
+                        <select class="form-control form-control-sm col-sm-3" name="" id=""><option>Filiais - Todas</option><option>Salvador (BA)</option><option>São Paulo (SP)</option></select> 
+                        <select name="" id="" class="form-control form-control-sm col-sm-6"><option>Turmas - TODAS</option><option>2008 MEDCURSO SALVADOR - Turma A/2008 MED SALVADOR</option><option>2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO TURMA A</option></select>    
+                    
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="p-5" >
+            <div class="d-flex justify-content-between d-print-none" >
+                <div class=" text-muted"><a onclick="window.print();return false;">imprimir</a> | <a ng-click="showLightBox = true">enviar para um amigo</a></div>
+                
+                
+                <div class="text-muted">foram encontrados 3201 registros</div>                               
+                
+            </div>
+        <div class="d-flex d-print-none justify-content-between alert alert-secondary p-2 mb-0">
+            <div class="d-flex w-auto p-0 justify-content-start ">
+                    <label class="pt-0 mr-2">1º ao 4º</label>   
+                        <ul class="list-inline ">
+                            <li class="list-inline-item"><button class="btn btn-sm btn-secondary">&lt;</button></li>
+                            <li class="list-inline-item"><button class="btn btn-sm btn-secondary">&gt;</button></li>
+                        </ul>   
+            </div>    
+            <div class="d-flex">
+                <span class="pr-2">ir para:</span>
+                <div class="">
+                  <input type="text" class="form-control form-control-sm" id="">
+                </div>
+            </div>
+            <div class="d-flex">
+                    <span class="pr-2">Mostrar:</span>   
+                    <select class="form-control form-control-sm " name="" id=""><option>Todos</option></select>   
+                
+            </div>
+
+            <div class="">    
+                    <a href=""><i class="fas fa-download"></i> baixar planilha completa</a>
+            </div>
+        </div>
+
+        <table class="table table-striped mt-3">
+            <thead class="table-secondary">
+              <tr>
+                <th scope="col">POSIÇÃO</th>
+                <th scope="col">NOTA</th>
+                <th scope="col">MATRÍCULA</th>
+                <th scope="col">ESPECIALIDADE</th>
+                <th scope="col">TURMA</th>
+                <th scope="col">FILIAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>42</td>
+                <td>897413</td>
+                <td>CLÍNICA MÉDICA</td>
+                <td>2008 MEDCURSO SALVADOR - Turma A/2008 MED SALVADOR</td>
+                <td>Salvador (BA)</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>40</td>
+                <td>745133</td>
+                <td>CIRURGIA GERAL</td>
+                <td>2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO TURMA A</td>
+                <td>São Paulo (SP)</td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+        <div class="d-flex d-print-none justify-content-between alert alert-secondary p-2 mb-0">
+            <div class="d-flex w-auto p-0 justify-content-start ">
+                    <label class="pt-0 mr-2">1º ao 4º</label>   
+                        <ul class="list-inline ">
+                            <li class="list-inline-item"><button class="btn btn-sm btn-secondary">&lt;</button></li>
+                            <li class="list-inline-item"><button class="btn btn-sm btn-secondary">&gt;</button></li>
+                        </ul>   
+            </div>    
+            <div class="d-flex">
+                <span class="pr-2">ir para:</span>
+                <div class="">
+                  <input type="text" class="form-control form-control-sm" id="">
+                </div>
+            </div>
+            <div class="d-flex">
+                    <span class="pr-2">Mostrar:</span>   
+                    <select class="form-control form-control-sm " name="" id=""><option>Todos</option></select>   
+                
+            </div>
+
+            <div class="">    
+                    <a href=""><i class="fas fa-download"></i> baixar planilha completa</a>
+            </div>
+        </div>
+        <div class="d-flex d-print-none justify-content-between" >
+                        <div class=" text-muted"><a onclick="window.print();return false;">imprimir</a> | <a ng-click="showLightBox = true">enviar para um amigo</a></div>
+                        
+                        
+                        <div class="">
+                            <a href=""> <i class="fas fa-caret-up"></i>topo</a>
+                        </div>
+        </div>
+</div>
+</div>
+
+<div ng-include='"templates/footer.html"'></div>
+
+
+
+<!-- Javascripts 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+-->
+
+<!-- Angular -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.min.js"></script>
+
+<!-- Javascripts principal -->
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+MenuLateral
+
+A+ A-
+
+Simulados de 2008
+Simulado 10
+Simulado 9
+Simulado 8
+Simulado 7
+Simulado 6
+Simulado 5
+  prova objetiva
+  prova final
+Simulado 4
+Simulado 3
+Simulado 2
+Simulado 1
+
+Principal
+SIMULADO 5 - PROVA OBJETIVA
+Os resultados do simulado são atualizados diariamente, na medida em que os cartões-resposta e as provas discursivas vão sendo são processados. 
+Através dos filtros, você poderá criar rankings personalizados, por ESPECIALIDADE, TURMA(Curso) e UNIDADE (Cidade).
+
+.boxCinza
+Entre com sua matrícula: <input> <botton:procurar>
+
+Filtrar por:
+<select: Especialidades - TODAS>     <select:Filiais - Todas>       <select:Turmas - TODAS>
+
+imprimir | enviar para um amigo                               foram encontrados 3201 registros
+1º ao 4º  < >  ir para: <input>  mostrar: <select:todos>   <link: icon:download :baixar planilha completa>
+
+<table>
+<th>
+POSIÇÃO NOTA MATRÍCULA ESPECIALIDADE 	TURMA 							FILIAL
+1º	42	897413	CLÍNICA MÉDICA	2008 MEDCURSO SALVADOR - Turma A/2008 MED SALVADOR 	Salvador (BA)
+2º	40	745133	CIRURGIA GERAL	2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO TURMA A São Paulo (SP)
+2º	40	897413	CLÍNICA MÉDICA	2008 MEDCURSO SALVADOR - Turma A/2008 MED SALVADOR 	Salvador (BA)
+3º	39	745133	CIRURGIA GERAL	2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO TURMA A São Paulo (SP)
+4º	38	897413	CLÍNICA MÉDICA	2008 MEDCURSO SALVADOR - Turma A/2008 MED SALVADOR 	Salvador (BA)
+4º	38	745133	CIRURGIA GERAL	2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO TURMA A São Paulo (SP)
+
+
+1º ao 4º  < >  ir para: <input>  mostrar: <select:todos>   <link: <icon:download> :baixar planilha completa>
+imprimir | enviar para um amigo                               <link: <icon:up> :topo>
+ 
