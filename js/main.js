@@ -6,45 +6,20 @@ var app = angular.module('simulado', [
   'ngRoute'
 ]);
 
-/**
- * Rotas
- */
-app.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider
-    // Home
-    .when("/", {templateUrl: "templates/home.html", controller: "PageCtrl"});
-}]);
-
-
-/**
- * Controls all other Pages
- */
 app.controller('cursosMed', function($rootScope, $location, $scope, $http, $filter){
-  $rootScope.activetab = $location.path("/simulado");
-  $rootScope.titulo = "Relatório de Cadastros Concluídos";
-  $rootScope.fluid = "-fluid";
    
-   $scope.hideLogin = false;
-   $scope.hideRj = false;
-   $scope.hideSp = false;
-   $scope.hideDf = false;
-   $scope.propertyName = 'nomeCompleto';
-   $scope.reverse = false;
-   
-   
-  //pegar os dados estatísticos ;
    $scope.getCadastrados = function(){
    
        
            $http({
                method: 'POST',
-               url: '/lista.json',
+               url: '../simulado_medgrupo/lista.json',
                data : {tipo:"cadastro"}
            }).then(function successCallback(respons){
               if(respons.data){ 
               
               $scope.cadastros = respons.data;
-              $scope.cadastrados = true;
+              
            
            }
               
@@ -52,20 +27,19 @@ app.controller('cursosMed', function($rootScope, $location, $scope, $http, $filt
            });
        
    };
-   
-   //filter
-  
-   
-   $scope.sortBy = function(propertyName) {
-     $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-     $scope.propertyName = propertyName;
-   };
+   $scope.pesquisar = false;
    
   
    $scope.getCadastrados();
   
 });
-app.directive('lightboxDirective', function() {
+
+app.filter('capitalize', function() {
+  return function(input) {
+    return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+  }
+});
+/* app.directive('lightboxDirective', function() {
   return {
     restrict: 'E', // applied on 'element'
     transclude: true, // re-use the inner HTML of the directive
@@ -73,4 +47,4 @@ app.directive('lightboxDirective', function() {
   }
 })
 
-angular.bootstrap(document, ['app']); // manually run the Angular app
+angular.bootstrap(document, ['app']); // manually run the Angular app */

@@ -52,16 +52,22 @@
                         
                         <label for="matricula" class="alert-link pl-0 mr-2 text-left" >Entre com sua matrícula:</label>
                         <input id="matricula" class="form-control form-control-sm col-sm-3" type="text" > 
-                        <button type="submit" class="btn btn-sm btn-dark col-sm-1 ml-2 " >Procurar</button>
+                        <button type="submit" ng-click="pesquisar='true'" class="btn btn-sm btn-dark col-sm-1 ml-2 " >Procurar</button>
                         </form>
                     </div> 
                     <label for="">Filtrar por:</label>
-                    <div class="form-inline">
-                                
-                        <select class="form-control form-control-sm col-sm-3" name="" id=""><option>Especialidades - TODAS</option><option>Clínica Geral</option><option>Cirurgia Geral</option></select>
-                        <select class="form-control form-control-sm col-sm-3" name="" id=""><option>Filiais - Todas</option><option>Salvador (BA)</option><option>São Paulo (SP)</option></select> 
-                        <select name="" id="" class="form-control form-control-sm col-sm-6"><option>Turmas - TODAS</option><option>2008 MEDCURSO SALVADOR - Turma A/2008 MED SALVADOR</option><option>2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO TURMA A</option></select>    
-                    
+                    <div class="form-inline" >
+                        <select ng-model="selectedEspecialidade"  ng-options="cadastro.especialidade for cadastro in cadastros" class="form-control form-control-sm col-sm-3" name="especialidade"  >
+                                <option value="">Especialidades - Todas </option>     
+                         </select>       
+
+                        <select ng-model="selectedFilial" ng-options="cadastro.filial for cadastro in cadastros" class="form-control form-control-sm col-sm-3" name="filiais" id="">
+                                <option value="">Filiais - Todas </option> 
+                        </select> 
+                        <select ng-model="selectedCurso" ng-options="cadastro.curso for cadastro in cadastros" name="cursos" id="" class="form-control form-control-sm col-sm-6">
+                                <option value="">Cursos - Todos </option> 
+                        </select>    
+                        
                     </div>
                     
                 </div>
@@ -101,7 +107,7 @@
             </div>
         </div>
 
-        <table class="table table-striped mt-3">
+        <table class="table  mt-3">
             <thead class="table-secondary">
               <tr>
                 <th scope="col">POSIÇÃO</th>
@@ -112,25 +118,19 @@
                 <th scope="col">FILIAL</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>42</td>
-                <td>897413</td>
-                <td>CLÍNICA MÉDICA</td>
-                <td>2008 MEDCURSO SALVADOR - Turma A/2008 MED SALVADOR</td>
-                <td>Salvador (BA)</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>40</td>
-                <td>745133</td>
-                <td>CIRURGIA GERAL</td>
-                <td>2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO TURMA A</td>
-                <td>São Paulo (SP)</td>
+            <tbody ng-if="pesquisar" ng-repeat="cadastro in cadastros | filter:{ selectedEsepecialidade }" >
+              <tr class="text-capitalize">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{cadastro.nota}}</td>
+                <td>{{cadastro.matricula}}</td>
+                <td>{{cadastro.especialidade  | lowercase}}</td>
+                <td>{{cadastro.curso  | lowercase}}</td>
+                <td>{{cadastro.filial  | capitalize }} - {{cadastro.estado  | uppercase }}</td>
               </tr>
               
+              
             </tbody>
+            <div ng-if="!pesquisar" class="alert alert-danger mt-3 text-center"> Digite uma matrícula e clique em Procurar.</div>
           </table>
 
         <div class="d-flex d-print-none justify-content-between alert alert-secondary p-2 mb-0">
@@ -167,7 +167,6 @@
         </div>
 </div>
 </div>
-
 <div ng-include='"templates/footer.html"'></div>
 
 
