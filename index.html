@@ -23,6 +23,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/main.css">
 
+    <!-- Angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.min.js"></script>
+
 </head>
 <body ng-app="simulado">
 <!--[if lt IE 7]>
@@ -52,12 +57,22 @@
                         
                         <label for="matricula" class="alert-link pl-0 mr-2 text-left" >Entre com sua matrícula:</label>
                         <input id="matricula" class="form-control form-control-sm col-sm-3" type="text" > 
-                        <button type="submit" ng-click="pesquisar='true'" class="btn btn-sm btn-dark col-sm-1 ml-2 " >Procurar</button>
+                        <button type="submit" ng-click="getCadastrados(); pesquisar=true" class="btn btn-sm btn-dark col-sm-1 ml-2 " >Procurar</button>
                         </form>
                     </div> 
                     <label for="">Filtrar por:</label>
                     <div class="form-inline" >
-                        <select ng-model="selectedEspecialidade"  ng-options="cadastro.especialidade for cadastro in cadastros" class="form-control form-control-sm col-sm-3" name="especialidade"  >
+                        <select ng-model="selectedEspecialidade"  ng-options="v for v in sEspecialidade" class="form-control form-control-sm col-sm-3" name="especialidade"  >
+                                <option value="">Especialidades - Todas </option>     
+                         </select>       
+
+                        <select ng-model="selectedFilial" ng-options="v for v in sFilial" class="form-control form-control-sm col-sm-3" name="filiais" id="">
+                                <option value="">Filiais - Todas </option> 
+                        </select> 
+                        <select ng-model="selectedCurso" ng-options="v for v in sCurso" name="cursos" id="" class="form-control form-control-sm col-sm-6">
+                                <option value="">Cursos - Todos </option> 
+                        </select> 
+                        <!-- <select ng-model="selectedEspecialidade"  ng-options="cadastro.especialidade for cadastro in cadastros" class="form-control form-control-sm col-sm-3" name="especialidade"  >
                                 <option value="">Especialidades - Todas </option>     
                          </select>       
 
@@ -66,7 +81,7 @@
                         </select> 
                         <select ng-model="selectedCurso" ng-options="cadastro.curso for cadastro in cadastros" name="cursos" id="" class="form-control form-control-sm col-sm-6">
                                 <option value="">Cursos - Todos </option> 
-                        </select>    
+                        </select>     -->
                         
                     </div>
                     
@@ -118,7 +133,7 @@
                 <th scope="col">FILIAL</th>
               </tr>
             </thead>
-            <tbody ng-if="pesquisar" ng-repeat="cadastro in cadastros | filter:{ selectedEsepecialidade }" >
+            <tbody ng-if="pesquisar" ng-repeat="cadastro in cadastros | orderBy: nota | filter: especialidade:selectedEspecialidade || curso:selectedCurso || undefined " >
               <tr class="text-capitalize">
                 <th scope="row">{{$index + 1}}</th>
                 <td>{{cadastro.nota}}</td>
@@ -168,18 +183,6 @@
 </div>
 </div>
 <div ng-include='"templates/footer.html"'></div>
-
-
-
-<!-- Javascripts 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
--->
-
-<!-- Angular -->
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
-
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.min.js"></script>
 
 <!-- Javascripts principal -->
 <script src="js/main.js"></script>

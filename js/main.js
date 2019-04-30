@@ -1,7 +1,6 @@
+(function () {
+  'use strict';
 
-/**
- * Main
- */
 var app = angular.module('simulado', [
   'ngRoute'
 ]);
@@ -22,15 +21,20 @@ app.controller('cursosMed', function($rootScope, $location, $scope, $http, $filt
               
            
            }
-              
+           $scope.sEspecialidade =  ["CLÍNICA MÉDICA", "CIRURGIA GERAL","Cardiologia"];
+           $scope.sFilial = ["São Paulo", "Salvador"];
+           $scope.sCurso = ["2008 MEDCURSO Salvador TURMA A/2008 MED Salvador ", "2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO "];
+         
            
            });
        
    };
    $scope.pesquisar = false;
    
-  
-   $scope.getCadastrados();
+
+   
+    
+   
   
 });
 
@@ -48,3 +52,5 @@ app.filter('capitalize', function() {
 })
 
 angular.bootstrap(document, ['app']); // manually run the Angular app */
+
+})();
