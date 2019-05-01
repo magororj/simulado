@@ -21,7 +21,7 @@ app.controller('cursosMed', function($rootScope, $location, $scope, $http, $filt
               
            
            }
-           $scope.sEspecialidade =  ["CLÍNICA MÉDICA", "CIRURGIA GERAL","Cardiologia"];
+           $scope.sEspecialidade =  ["CLÍNICA MÉDICA", "CIRURGIA GERAL", "Cardiologia"];
            $scope.sFilial = ["São Paulo", "Salvador"];
            $scope.sCurso = ["2008 MEDCURSO Salvador TURMA A/2008 MED Salvador ", "2008 MEDCURSO SÃO PAULO TURMA A/2008 MED SÃO PAULO "];
          
@@ -43,14 +43,6 @@ app.filter('capitalize', function() {
     return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
   }
 });
-/* app.directive('lightboxDirective', function() {
-  return {
-    restrict: 'E', // applied on 'element'
-    transclude: true, // re-use the inner HTML of the directive
-    template: '<section ng-transclude></section>', // need this so that inner HTML will be used
-  }
-})
 
-angular.bootstrap(document, ['app']); // manually run the Angular app */
 
 })();

@@ -62,8 +62,9 @@
                     </div> 
                     <label for="">Filtrar por:</label>
                     <div class="form-inline" >
-                        <select ng-model="selectedEspecialidade"  ng-options="v for v in sEspecialidade" class="form-control form-control-sm col-sm-3" name="especialidade"  >
-                                <option value="">Especialidades - Todas </option>     
+                        <select ng-model="selectedEspecialidade"    ng-options="v for v in sEspecialidade" class="form-control form-control-sm col-sm-3" name="especialidade"  >
+                                <option value="">Especialidades - Todas </option>
+                                     
                          </select>       
 
                         <select ng-model="selectedFilial" ng-options="v for v in sFilial" class="form-control form-control-sm col-sm-3" name="filiais" id="">
@@ -74,14 +75,7 @@
                         </select> 
                         <!-- <select ng-model="selectedEspecialidade"  ng-options="cadastro.especialidade for cadastro in cadastros" class="form-control form-control-sm col-sm-3" name="especialidade"  >
                                 <option value="">Especialidades - Todas </option>     
-                         </select>       
-
-                        <select ng-model="selectedFilial" ng-options="cadastro.filial for cadastro in cadastros" class="form-control form-control-sm col-sm-3" name="filiais" id="">
-                                <option value="">Filiais - Todas </option> 
-                        </select> 
-                        <select ng-model="selectedCurso" ng-options="cadastro.curso for cadastro in cadastros" name="cursos" id="" class="form-control form-control-sm col-sm-6">
-                                <option value="">Cursos - Todos </option> 
-                        </select>     -->
+                         </select>   -->
                         
                     </div>
                     
@@ -133,7 +127,8 @@
                 <th scope="col">FILIAL</th>
               </tr>
             </thead>
-            <tbody ng-if="pesquisar" ng-repeat="cadastro in cadastros | orderBy: nota | filter: especialidade:selectedEspecialidade || curso:selectedCurso || undefined " >
+            <tbody ng-if="pesquisar"  ng-repeat="cadastro in cadastros | orderBy: nota | filter: (!!selectedEspecialidade || undefined) && {especialidade: selectedEspecialidade} | filter: (!!selectedCurso || undefined) && {curso: selectedCurso} |  filter: (!!selectedFilial || undefined) && {filial: selectedFilial} ">
+            
               <tr class="text-capitalize">
                 <th scope="row">{{$index + 1}}</th>
                 <td>{{cadastro.nota}}</td>
