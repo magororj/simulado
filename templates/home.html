@@ -1,2 +1,138 @@
-<h1>
-    {{propertyName}}}</h1>
+
+        
+
+        <div class="row d-flex justify-content-between d-print-none">
+            <!--MENU lateral-->
+            <div ng-include='"templates/menu.html"' class="col-sm-3 mt-4 ml-5"></div>
+
+            <div class="row col-sm-8 mt-4 pl-0 pr-5 mr-1 d-print-none" >
+                <div class="col-sm-12 mt-5">
+                    <h2>SIMULADO 5 - PROVA OBJETIVA</h2>
+                    <p> Os resultados do simulado são atualizados diariamente, na medida em que os 
+                            cartões-resposta e as provas discursivas vão sendo são processados. </p>
+                    <p>Através dos filtros, você poderá criar rankings personalizados, por ESPECIALIDADE, 
+                            TURMA(Curso) e UNIDADE (Cidade).</p>
+                    
+                    <div class="alert alert-dark">
+                        <form class="form-inline">
+                        
+                        <label for="matricula" class="alert-link pl-0 mr-2 text-left" >Entre com sua matrícula:</label>
+                        <input id="matricula" class="form-control form-control-sm col-sm-3" type="text" > 
+                        <button type="submit" ng-click="getCadastrados(); pesquisar=true" class="btn btn-sm btn-dark col-sm-1 ml-2 " >Procurar</button>
+                        </form>
+                    </div> 
+                    <label for="">Filtrar por:</label>
+                    <div class="form-inline" >
+                        <select ng-model="selectedEspecialidade"    ng-options="v for v in sEspecialidade" class="form-control form-control-sm col-sm-3" name="especialidade"  >
+                                <option value="">Especialidades - Todas </option>
+                                     
+                         </select>       
+
+                        <select ng-model="selectedFilial" ng-options="v for v in sFilial" class="form-control form-control-sm col-sm-3" name="filiais" id="">
+                                <option value="">Filiais - Todas </option> 
+                        </select> 
+                        <select ng-model="selectedCurso" ng-options="v for v in sCurso" name="cursos" id="" class="form-control form-control-sm col-sm-6">
+                                <option value="">Cursos - Todos </option> 
+                        </select> 
+                         
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="p-5" >
+            <div class="d-flex justify-content-between d-print-none" >
+                    <div ><a class=" btn btn-link text-secondary p-0 " onclick="window.print();return false;">imprimir</a> | <a class=" btn btn-link p-0 text-secondary" ng-click='toggleModal()'>enviar para um amigo</a></div>
+                
+                
+                <div class="text-muted">foram encontrados 3201 registros</div>                               
+                
+            </div>
+        <div class="d-flex d-print-none justify-content-between alert alert-secondary p-2 mb-0">
+            <div class="d-flex w-auto p-0 justify-content-start ">
+                    <label class="pt-0 mr-2">1º ao 4º</label>   
+                        <ul class="list-inline ">
+                            <li class="list-inline-item"><button class="btn btn-sm btn-secondary">&lt;</button></li>
+                            <li class="list-inline-item"><button class="btn btn-sm btn-secondary">&gt;</button></li>
+                        </ul>   
+            </div>    
+            <div class="d-flex">
+                <span class="pr-2">ir para:</span>
+                <div class="">
+                  <input type="text" class="form-control form-control-sm" id="">
+                </div>
+            </div>
+            <div class="d-flex">
+                    <span class="pr-2">Mostrar:</span>   
+                    <select class="form-control form-control-sm " name="" id=""><option>Todos</option></select>   
+                
+            </div>
+
+            <div class="">    
+                    <a href=""><i class="fas fa-download"></i> baixar planilha completa</a>
+            </div>
+        </div>
+
+        <table class="table  mt-3" ng-if="pesquisar">
+            <thead class="table-secondary">
+              <tr>
+                <th scope="col">POSIÇÃO</th>
+                <th scope="col">NOTA</th>
+                <th scope="col">MATRÍCULA</th>
+                <th scope="col">ESPECIALIDADE</th>
+                <th scope="col">TURMA</th>
+                <th scope="col">FILIAL</th>
+              </tr>
+            </thead>
+            <tbody   ng-repeat="cadastro in cadastros | orderBy: nota | filter: (!!selectedEspecialidade || undefined) && {especialidade: selectedEspecialidade} | filter: (!!selectedCurso || undefined) && {curso: selectedCurso} |  filter: (!!selectedFilial || undefined) && {filial: selectedFilial} ">
+            
+              <tr class="text-capitalize">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{cadastro.nota}}</td>
+                <td>{{cadastro.matricula}}</td>
+                <td>{{cadastro.especialidade  | lowercase}}</td>
+                <td>{{cadastro.curso  | lowercase}}</td>
+                <td>{{cadastro.filial  | capitalize }} - {{cadastro.estado  | uppercase }}</td>
+              </tr>
+              
+              
+            </tbody>
+            <div ng-if="!pesquisar" class="alert alert-danger mt-3 text-center"> Digite uma matrícula e clique em Procurar.</div>
+          </table>
+
+        <div class="d-flex d-print-none justify-content-between alert alert-secondary p-2 mb-0">
+            <div class="d-flex w-auto p-0 justify-content-start ">
+                    <label class="pt-0 mr-2">1º ao 4º</label>   
+                        <ul class="list-inline ">
+                            <li class="list-inline-item"><button class="btn btn-sm btn-secondary">&lt;</button></li>
+                            <li class="list-inline-item"><button class="btn btn-sm btn-secondary">&gt;</button></li>
+                        </ul>   
+            </div>    
+            <div class="d-flex">
+                <span class="pr-2">ir para:</span>
+                <div class="">
+                  <input type="text" class="form-control form-control-sm" id="">
+                </div>
+            </div>
+            <div class="d-flex">
+                    <span class="pr-2">Mostrar:</span>   
+                    <select class="form-control form-control-sm " name="" id=""><option>Todos</option></select>   
+                
+            </div>
+
+            <div class="">    
+                    <a href=""><i class="fas fa-download"></i> baixar planilha completa</a>
+            </div>
+        </div>
+        <div class="d-flex d-print-none justify-content-between" >
+                        <div ><a class=" btn btn-link text-secondary p-0 " onclick="window.print();return false;">imprimir</a> | <a class=" btn btn-link p-0 text-secondary" ng-click='toggleModal()'>enviar para um amigo</a></div>
+                        
+                        
+                        <div >
+                            <a href="#"> <i class="fas fa-caret-up"></i>topo</a>
+                        </div>
+        </div>
+</div>
+
+    <modal-dialog show='modalShown' width='750px' height='90%'></modal-dialog>
