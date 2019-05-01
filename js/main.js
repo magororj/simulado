@@ -81,7 +81,8 @@ app.directive('modalDialog', function() {
                         
                         <div class="modal-body">
                           <h2>Code is beautiful!</h2>
-                          <p class="text-center"><img class="w-75 h-auto" src="http://t0.gstatic.com/images?q=tbn:ANd9GcQnqM9EsuoREDe_pvH_paYdh7gYYiGH0S9yBnURQ4rZ2foHk_A4"></p>
+                          <p class="text-center">
+                          <img class="w-75 h-auto" src="http://t0.gstatic.com/images?q=tbn:ANd9GcQnqM9EsuoREDe_pvH_paYdh7gYYiGH0S9yBnURQ4rZ2foHk_A4"></p>
                         </div>
                         
                       </div>
